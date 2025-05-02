@@ -16,7 +16,7 @@ interface Project {
   image: string;
   gallery: string[];
   tags: string[];
-  link: string;
+  link?: string;
   githubLink?: string;
   category: string;
   client?: string;
@@ -54,20 +54,19 @@ const projects: Project[] = [
     ],
     tags: ["React", "Laravel", "MySQL", "Typescript", "Quidax"],
     link: "https://bitroyalty.com.ng/app",
-    // githubLink: "https://github.com/bright-webb/bitroyalty",
     category: "Full Stack",
     client: "BitRoyalty.",
-    date: "November 2024",
+    date: "October 2024",
     duration: "6 months",
-    role: "Lead Developer",
-    // team: ["John Doe - UI/UX Designer", "Jane Smith - Backend Developer", "Mike Johnson - DevOps"],
+    role: "Full-stack Developer",
     features: [
       "Secure user authentication and authorization",
       "Real-time cryptocurrency price tracking",
       "Multiple wallet management",
       "Transaction history and analytics",
       "Admin dashboard with comprehensive reporting",
-      "Payment gateway integration"
+      "KYC Verification process",
+      "Real time notifications"
     ],
     technologies: [
       "React", "Laravel", "MySQL", "TypeScript", "Redis", "AWS", "Docker"
@@ -76,13 +75,13 @@ const projects: Project[] = [
       "Ensuring secure transactions and wallet management",
       "Implementing real-time price updates with minimal latency",
       "Handling high-volume transactions during peak periods",
-      // "Developing a responsive interface for both desktop and mobile"
+      "Designing an intuitive interface for complex trading flows"
     ],
     solutions: [
       "Implemented robust encryption and secure wallet architecture",
       "Used WebSockets for real-time data with Redis for caching",
       "Designed scalable infrastructure with load balancing on AWS",
-      // "Created a responsive UI with optimized components for all devices"
+      "Created guided workflows with contextual help for new users"
     ],
     nextProject: 2
   },
@@ -93,19 +92,21 @@ const projects: Project[] = [
     fullDescription: "This platform revolutionizes peer-to-peer cryptocurrency trading with a focus on security and user experience. The system facilitates direct transactions between users while providing escrow services to ensure safe trades. The comprehensive admin dashboard gives operators full visibility of all platform activities and robust tools for user management and dispute resolution.",
     image: "/images/portfolio/fundwallet.PNG",
     gallery: [
-      "/images/portfolio/fundwallet-detail-1.jpg",
-      "/images/portfolio/fundwallet-detail-2.jpg",
-      "/images/portfolio/fundwallet-detail-3.jpg",
+      "/images/portfolio/fundwallet.PNG",
+      "/images/portfolio/fundwallet/fundwallet2.PNG",
+      "/images/portfolio/fundwallet/fundwallet3.PNG",
+      "/images/portfolio/fundwallet/fundwallet4.PNG",
+      "/images/portfolio/fundwallet/fundwallet5.PNG",
+      "/images/portfolio/fundwallet/fundwallet6.PNG",
+      "/images/portfolio/fundwallet/fundwallet7.PNG",
     ],
     tags: ["PHP", "MySQL", "JavaScript", "P2P", "Admin Dashboard"],
-    link: "https://fundwallet.com",
-    githubLink: "https://github.com/bright-webb/fundwallet",
+    link: "https://fundwallet.net",
     category: "Fintech",
-    client: "FundWallet Technologies",
-    date: "March 2022",
-    duration: "8 months",
+    client: "FundWallet",
+    date: "November 2024",
+    duration: "5 months",
     role: "Full-stack Developer",
-    team: ["Sarah Williams - Project Manager", "David Chen - Frontend Developer", "Lisa Taylor - QA Specialist"],
     features: [
       "P2P trading platform with escrow services",
       "Multi-currency wallet system",
@@ -129,29 +130,21 @@ const projects: Project[] = [
       "Created guided workflows with contextual help for new users",
       "Optimized database with indexing and query optimizations"
     ],
-    testimonial: {
-      text: "Working with Bright was a game-changer for our platform. His technical expertise in cryptocurrency systems is unmatched, and his ability to translate complex requirements into elegant solutions made our project a success.",
-      author: "Rebecca Johnson",
-      position: "CTO, FundWallet Technologies"
-    },
     nextProject: 3
   },
   {
     id: 3,
-    title: "WebSocket Server",
+    title: "Cherryio WebSocket Server",
     description: "A high-performance WebSocket server built in Go, enabling real-time communication between a PHP backend and a TypeScript frontend. Designed to handle event broadcasting, subscriptions, and bidirectional messaging with low latency.",
-    fullDescription: "This WebSocket server is the backbone of real-time communications for multiple high-traffic applications. Built with Go for maximum performance, it handles thousands of concurrent connections with minimal resource usage. The server includes sophisticated routing, authentication mechanisms, and support for various messaging patterns including pub/sub, request-response, and broadcast.",
+    fullDescription: "Cherryio is a custom-built WebSocket server that acts as the real-time core infrastructure for several of my applications. Developed in Go for optimal concurrency and efficiency, it handles thousands of simultaneous connections with minimal resource consumption. Cherryio supports robust pub/sub models, real-time broadcasting, direct messaging, and request response patterns. Designed with horizontal scalability in mind, it includes JWT-based authentication, Redis backed message persistence, and reconnection strategies for offline clients.  Tt's a battle-tested backbone for event-driven applications.",
     image: "/images/portfolio/github.jfif",
     gallery: [
-      "/images/portfolio/websocket-detail-1.jpg",
-      "/images/portfolio/websocket-detail-2.jpg",
-      "/images/portfolio/websocket-detail-3.jpg",
+      "/images/portfolio/github.jfif",
     ],
     tags: ["Go", "WebSocket", "Real-Time", "Backend"],
-    link: "https://github.com/bright-webb/realtime-server",
-    githubLink: "https://github.com/bright-webb/realtime-server",
+    githubLink: "https://github.com/bright-webb/cherryio",
     category: "Backend",
-    client: "Internal Project",
+    client: "Internal Project / Infrastructure Layer",
     date: "August 2022",
     duration: "3 months",
     role: "Backend Developer",
@@ -182,52 +175,44 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "BenchStack Team Collaboration Platform",
-    description: "A SaaS platform that intelligently connects startups and businesses with remote teams of professionals. BenchStack uses AI to match users based on skills, roles, and project requirements.",
-    fullDescription: "BenchStack is a revolutionary platform that transforms how companies build and manage remote teams. Using artificial intelligence, the platform analyzes project requirements and matches them with the perfect combination of professionals from around the world. The system handles everything from team formation to project management, time tracking, and payments, creating a seamless experience for both businesses and team members.",
+    title: "Ballocs Team Collaboration Platform",
+    description: "A decentralized hub for projects and collaboration.",
+    fullDescription: "Ballocs, which was formally Cohub serves as a centralized platform where individuals and businesses can come together to collaborate on projects, build diverse teams, and harness the power of collective expertise. Whether you're a seasoned professional or a budding entrprenuer, Cohub offers a level playin field where ideas can thrive and potential realized",
     image: "/images/portfolio/benchstack.PNG",
     gallery: [
-      "/images/portfolio/benchstack-detail-1.jpg",
-      "/images/portfolio/benchstack-detail-2.jpg",
-      "/images/portfolio/benchstack-detail-3.jpg",
+      "/images/portfolio/ballocs.PNG",
+      "/images/portfolio/ballocs/dashboard.jpg",
+      "/images/portfolio/ballocs/1729091422781.jfif",
+      "/images/portfolio/ballocs/mobile-mockup.png",
     ],
-    tags: ["Laravel", "React", "TypeScript", "Inertia.js", "AI", "SaaS"],
-    link: "https://benchstack.com",
-    githubLink: "https://github.com/bright-webb/benchstack",
+    tags: ["Laravel", "React", "TypeScript", "SaaS", "Cherryio"],
+    githubLink: "https://github.com/Bevynile/cohub_frontend",
     category: "SaaS",
-    client: "BenchStack Inc.",
-    date: "November 2023",
-    duration: "9 months",
-    role: "Technical Lead",
-    team: ["Emma Wilson - AI Specialist", "Robert Brown - UI/UX Designer", "Carlos Mendez - Backend Developer", "Sophia Lee - QA Engineer"],
+    date: "January 2024",
+    duration: "1 year",
+    role: "Full-stack Developer",
     features: [
-      "AI-powered team matching algorithm",
-      "Comprehensive project management tools",
-      "Time tracking and automated invoicing",
-      "In-app messaging and video conferencing",
-      "Secure payment processing and escrow",
-      "Performance analytics and reporting"
+      "Cross platform access",
+      "Time tracking",
+      "Real time messaging and comments",
+      "Project management and task delegation tools",
+      "Decentralized user permissions and role management"
     ],
     technologies: [
-      "Laravel", "React", "TypeScript", "Inertia.js", "PostgreSQL", "TensorFlow.js", "Stripe", "AWS"
+      "Laravel", "React", "TypeScript", "Joy UI", "MySQL", "Redis", "Cherryio", "AWS", "Docker"
     ],
     challenges: [
-      "Developing an accurate AI matching algorithm",
+      "Integrating project management, messaging, and automation into a cohesive UX without feature bloat",
       "Creating a unified experience across project management tools",
       "Building a fair and transparent rating system",
       "Ensuring data security and privacy compliance"
     ],
     solutions: [
-      "Used supervised learning with expert-labeled datasets for the matching algorithm",
+      "Built a unified design system and modular architecture to ensure UX consistency across all collaboration tools",
       "Implemented a consistent design system and unified API layer",
       "Created a multi-factor rating system with review moderation",
-      "Implemented end-to-end encryption and GDPR-compliant data handling"
+      "Deployed full-stack end-to-end encryption, role-based access controls, and AWS-hosted secure environments with GDPR-compliant policies"
     ],
-    testimonial: {
-      text: "Bright's work on BenchStack transformed our business. The platform has dramatically improved how we build remote teams and manage projects. The AI-matching feature in particular has saved us countless hours in recruitment.",
-      author: "Jennifer Williams",
-      position: "Founder, BenchStack Inc."
-    },
     nextProject: 1
   }
 ];

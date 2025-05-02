@@ -5,7 +5,7 @@ import {
   MessageCircle, Globe, ArrowRight, Heart,
   Mail, ExternalLink, Send, Copy, Check, Twitter, Linkedin, Smartphone
 } from 'react-feather';
-import './Hero.scss';
+import './Home.scss';
 import Layout from '../common/Layout/Layout';
 import { Link } from 'react-router-dom';
 
@@ -74,18 +74,7 @@ const Hero: React.FC = () => {
       tags: ["Laravel", "React", "TypeScript", "Inertia.js", "AI", "SaaS"],
       link: "#",
       category: "SaaS"
-    },
-    {
-      id: 5,
-      title: "SharpGuide Learning Platform",
-      description: "An intuitive e-learning platform designed to deliver engaging and structured courses. SharpGuide empowers learners with interactive lessons.",
-      image: "/images/portfolio/sharpguide.PNG",
-      tags: ["PHP", "Javascript", "E-Learning", "CSS"],
-      link: "#",
-      category: "EdTech"
-    }
-    
-      
+    }, 
   ]);
 
   const socialLinks = [
