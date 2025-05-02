@@ -1,0 +1,153 @@
+@import './variables';
+@import './mixins';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    line-height: 1.5;
+    color: $secondary-color;
+    background-color: $dark-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width: 1023px){
+    body{
+        display: block;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    transition: color $transition-normal;
+
+    &:hover{
+        color: $primary-color;
+    }
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    @include heading-1;
+}
+
+h2 {
+    @include heading-2;
+}
+
+h3 {
+    @include heading-3;
+}
+
+p {
+    @include paragraph
+}
+
+section {
+    padding: $spacing-xxl 0;
+}
+
+.container {
+    @include container;
+}
+
+.section-title {
+    margin-bottom: $spacing-xl;
+
+    h2 {
+        display: inline-block;
+        position: relative;
+        margin-bottom: $spacing-sm;
+
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40%;
+            height: 3px;
+            background-color: $primary-color;
+        }
+    }
+
+    p {
+        color: ligten($secondary-color, 30%);
+    }
+}
+
+.highlight {
+    color: $primary-color;
+}
+
+.badge {
+    @include badge;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.5s ease forwards;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
