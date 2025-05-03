@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     
     setTimeout(() => {
      
-      const resumeUrl = '/documents/Bright-Webilor.pdf';
+      const resumeUrl = '/documents/bright.pdf';
       const link = document.createElement('a');
       link.href = resumeUrl;
       link.download = 'BrightWebilor-Resume.pdf';
