@@ -217,6 +217,16 @@ const projects: Project[] = [
   }
 ];
 
+const BASE_LIKE_COUNTS: Record<number, number> = {
+  1: 78,
+  2: 63,
+  3: 42,
+  4: 95
+};
+
+const LIKED_PROJECTS_KEY = 'portfolio_liked_projects';
+const PROJECT_LIKES_KEY = 'portfolio_project_likes';
+
 const getIconForTech = (tech: string) => {
   const techMap: Record<string, any> = {
     "React": <Code size={16} />,
@@ -237,6 +247,7 @@ const getIconForTech = (tech: string) => {
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const projectId = Number(id);
   const navigate = useNavigate();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
@@ -251,29 +262,46 @@ const ProjectDetail: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const techRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => {
-  const animateOnScroll = () => {
-    const elements = document.querySelectorAll('[data-animate], [data-stagger]');
+  useEffect(() => {
+    if (!projectId) return;
     
-    elements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const isVisible = rect.top < window.innerHeight * 0.8;
+    try {
+      const likedProjects = JSON.parse(localStorage.getItem(LIKED_PROJECTS_KEY) || '[]');
+      setLiked(likedProjects.includes(projectId));
       
-      if (isVisible) {
-        el.classList.add('animate-in');
-      }
-    });
-  };
+      const savedLikeCounts = JSON.parse(localStorage.getItem(PROJECT_LIKES_KEY) || '{}');
+      const count = savedLikeCounts[projectId] || BASE_LIKE_COUNTS[projectId] || Math.floor(Math.random() * 120) + 30;
+      setLikeCount(count);
+    } catch (error) {
+      console.error('Error loading like data from localStorage:', error);
+      setLiked(false);
+      setLikeCount(BASE_LIKE_COUNTS[projectId] || Math.floor(Math.random() * 120) + 30);
+    }
+  }, [projectId]);
 
-  // Initial check
-  animateOnScroll();
-  window.addEventListener('scroll', animateOnScroll);
-  
-  return () => {
-    window.removeEventListener('scroll', animateOnScroll);
-  };
-}, []);
-  
+  useEffect(() => {
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('[data-animate], [data-stagger]');
+      
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.8;
+        
+        if (isVisible) {
+          el.classList.add('animate-in');
+        }
+      });
+    };
+
+    // Initial check
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', animateOnScroll);
+    };
+  }, []);
+    
   useEffect(() => {
     window.scrollTo(0, 0);
     setLoading(true);
@@ -282,7 +310,6 @@ useEffect(() => {
       const projectData = projects.find(p => p.id === Number(id));
       if (projectData) {
         setProject(projectData);
-        setLikeCount(Math.floor(Math.random() * 120) + 30);
       }
       setLoading(false);
       setTimeout(() => {
@@ -337,8 +364,40 @@ useEffect(() => {
   };
   
   const handleLike = () => {
-    setLiked(!liked);
-    setLikeCount(prev => liked ? prev - 1 : prev + 1);
+    if (!projectId) return;
+    
+    const newLikedState = !liked;
+    setLiked(newLikedState);
+    
+    // Update like count
+    const newLikeCount = liked ? likeCount - 1 : likeCount + 1;
+    setLikeCount(newLikeCount);
+    
+    try {
+      const likedProjects = JSON.parse(localStorage.getItem(LIKED_PROJECTS_KEY) || '[]');
+      
+      let updatedLikedProjects;
+      if (newLikedState) {
+        if (!likedProjects.includes(projectId)) {
+          updatedLikedProjects = [...likedProjects, projectId];
+        } else {
+          updatedLikedProjects = likedProjects;
+        }
+      } else {
+        updatedLikedProjects = likedProjects.filter((id: number) => id !== projectId);
+      }
+      
+      localStorage.setItem(LIKED_PROJECTS_KEY, JSON.stringify(updatedLikedProjects));
+      const savedLikeCounts = JSON.parse(localStorage.getItem(PROJECT_LIKES_KEY) || '{}');
+      const updatedLikeCounts = {
+        ...savedLikeCounts,
+        [projectId]: newLikeCount
+      };
+      
+      localStorage.setItem(PROJECT_LIKES_KEY, JSON.stringify(updatedLikeCounts));
+    } catch (error) {
+      console.error('Error saving like data to localStorage:', error);
+    }
   };
   
   const goToNextProject = () => {
