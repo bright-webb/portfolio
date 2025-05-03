@@ -68,10 +68,10 @@ const Hero: React.FC = () => {
     },
     {
       id: 4,
-      title: "BenchStack Team Collaboration Platform",
-      description: "A SaaS platform that intelligently connects startups and businesses with remote teams of professionals. BenchStack uses AI to match users based on skills, roles, and project requirements.",
-      image: "/images/portfolio/benchstack.PNG",
-      tags: ["Laravel", "React", "TypeScript", "Inertia.js", "AI", "SaaS"],
+      title: "Ballocs Team Collaboration Platform",
+      description: "A decentralized hub for projects and collaboration.",
+      image: "/images/portfolio/ballocs.PNG",
+      tags: ["Laravel", "React", "TypeScript","SaaS"],
       link: "#",
       category: "SaaS"
     }, 
@@ -146,7 +146,6 @@ const Hero: React.FC = () => {
 
   const displayEmail = isMobile ? "hey@bright..." : "hey@bright-webilor.com.ng";
 
-  // Copy email to clipboard function
   const copyEmail = () => {
     navigator.clipboard.writeText("hey@bright-webilor.com.ng")
       .then(() => {

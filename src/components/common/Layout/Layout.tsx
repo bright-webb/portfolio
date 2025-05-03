@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     
     setTimeout(() => {
      
-      const resumeUrl = '/resume.pdf';
+      const resumeUrl = '/documents/Bright-Webilor.pdf';
       const link = document.createElement('a');
       link.href = resumeUrl;
       link.download = 'BrightWebilor-Resume.pdf';
@@ -92,9 +92,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
             <p>&copy; {new Date().getFullYear()} Bright Webilor. All rights reserved.</p>
             <div className="social-links">
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href="https://github.com/bright-webb" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://linkedin.com/in/bright-webilor-926604193" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://twitter.com/bright__webb" target="_blank" rel="noopener noreferrer">Twitter</a>
             </div>
           </div>
         </div>
